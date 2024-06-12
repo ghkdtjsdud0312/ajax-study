@@ -1,10 +1,8 @@
 package ajax.ajax_study.controller;
 
+import ajax.ajax_study.dto.AjaxDTO;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AjaxController {
@@ -34,5 +32,12 @@ public class AjaxController {
                                      @RequestParam("param2") String param2) {
         System.out.println("param1 = " + param1 + ", param2 = " + param2);
         return "ex04 메서드 호출 완료";
+    }
+
+    @GetMapping("/ex05")
+    // @ResponseBody 뒤 AjaxDTO를 리턴 타입으로 지정하기
+    public @ResponseBody AjaxDTO ex05(@ModelAttribute AjaxDTO ajaxDTO) {
+        System.out.println("ajaxDTO = " + ajaxDTO);
+        return ajaxDTO; // html 파일에서 res 부분이 매개 값이 어떻게 보여지느냐를 확인 할 수 있다.
     }
 }
