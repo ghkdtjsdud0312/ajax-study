@@ -40,4 +40,10 @@ public class AjaxController {
         System.out.println("ajaxDTO = " + ajaxDTO);
         return ajaxDTO; // html 파일에서 res 부분이 매개 값이 어떻게 보여지느냐를 확인 할 수 있다.
     }
+
+    @PostMapping("/ex06")
+    public @ResponseBody AjaxDTO ex06(@ModelAttribute AjaxDTO ajaxDTO) {
+        System.out.println("ajaxDTO = " + ajaxDTO);
+        return ajaxDTO;
+    }
 }
