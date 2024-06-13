@@ -60,8 +60,18 @@ public class AjaxController {
 
     private List<AjaxDTO> DTOList() {
         List<AjaxDTO> dtoList = new ArrayList<>();
-        dtoList.add(new AjaxDTO("data1", "data11"));
-        dtoList.add(new AjaxDTO("data2", "data22"));
+        dtoList.add(new AjaxDTO("data1", "data11")); // dtoList
+        dtoList.add(new AjaxDTO("data2", "data22")); // dtoList
+        return dtoList;
+    }
+
+    @PostMapping("/ex08")
+    // @ResponseBody : 응답을 어떻게 받을 수 있나
+    // @RequestBody : 요청을 어떻게 받을 수 있나
+    public @ResponseBody List<AjaxDTO> ex08(@RequestBody AjaxDTO ajaxDTO) {
+        System.out.println("ajaxDTO = " + ajaxDTO);
+        List<AjaxDTO> dtoList = DTOList();
+        dtoList.add(ajaxDTO); // 3개의 객체 리스트가 들어 있는 DTOList
         return dtoList;
     }
 }
