@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ex10</title>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+<button onclick="ex10Fn()">ex10 함수 호출</button>
+</body>
+<script>
+    const ex10Fn = () => {
+      const val1 = "Hello SpringBoot!!";
+
+      const params = {
+          "param1": val1,
+          "param2": "안녕"
+      };
+
+      $.ajax({
+        // 요청 방식: post
+        // 요청 주소: /ex10
+        type: "post",
+        url: "/ex10",
+        // parameter 전달 하기
+        data: JSON.stringify(params), // json으로 변환 해서 보냄
+        contentType: "application/json", // 서버 쪽에도 요청 메세지를 보낼 때 이 파라미터는 json으로 날아 간다.
+
+        // 요청이 성공 했을 때 실행 되는 부분
+        success: function(res) {
+          console.log("성공", res);
+          console.log(res[0]); // 첫번째 객체의 0번 인덱스에 있는 값을 접근 한다.
+          console.log(res[1].param1); // 인덱스 1번의 params
+        <!-- 자바스크립트 for문 -->
+          for(let i in res) {
+            console.log("i : ", i);
+            console.log(res[i]); // 인덱스 0 번일 때 , 1번일 때, 2번일 때
+          }
+        },
+        // 요청이 실패 했을 때 실행 되는 부분
+        error: function() {
+          console.log("실패");
+        }
+      })
+    }
+</script>
+</html>

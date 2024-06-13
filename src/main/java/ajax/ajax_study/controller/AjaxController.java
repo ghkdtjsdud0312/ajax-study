@@ -1,6 +1,8 @@
 package ajax.ajax_study.controller;
 
 import ajax.ajax_study.dto.AjaxDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,4 +76,15 @@ public class AjaxController {
         dtoList.add(ajaxDTO); // 3개의 객체 리스트가 들어 있는 DTOList
         return dtoList;
     }
+
+    @PostMapping("/ex09")
+    // @ResponseBody : 응답을 어떻게 받을 수 있나 / 데이터만 리턴을 준다 라는 의미
+    // @RequestBody : 요청을 어떻게 받을 수 있나
+    // ResponseEntity : body 정보뿐 아니라 헤더 부분에 대한 정보들, 스테이터스 코드(404,500 등) 메시지도 다 같이 줄 수 있다. responsebody보단 더 포괄적인 의미를 가짐
+    public ResponseEntity ex09(@RequestBody AjaxDTO ajaxDTO) {
+        System.out.println("ajaxDTO = " + ajaxDTO);
+        return new ResponseEntity<>(HttpStatus.OK); // responseEntity를 여기서 선언한다. 여기서 데이터를 리턴하는 것이 아니라 스테이터스 코드만 리턴하는 경우만 리턴한다.
+    }
+
+
 }
