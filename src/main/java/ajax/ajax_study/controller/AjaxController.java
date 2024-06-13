@@ -4,6 +4,9 @@ import ajax.ajax_study.dto.AjaxDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class AjaxController {
 
@@ -45,5 +48,20 @@ public class AjaxController {
     public @ResponseBody AjaxDTO ex06(@ModelAttribute AjaxDTO ajaxDTO) {
         System.out.println("ajaxDTO = " + ajaxDTO);
         return ajaxDTO;
+    }
+
+    @PostMapping("/ex07")
+    // @ResponseBody : 응답을 어떻게 받을 수 있나
+    // @RequestBody : 요청을 어떻게 받을 수 있나
+    public @ResponseBody AjaxDTO ex07(@RequestBody AjaxDTO ajaxDTO) {
+        System.out.println("ajaxDTO = " + ajaxDTO);
+        return ajaxDTO;
+    }
+
+    private List<AjaxDTO> DTOList() {
+        List<AjaxDTO> dtoList = new ArrayList<>();
+        dtoList.add(new AjaxDTO("data1", "data11"));
+        dtoList.add(new AjaxDTO("data2", "data22"));
+        return dtoList;
     }
 }

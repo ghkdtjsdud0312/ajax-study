@@ -12,4 +12,8 @@ import lombok.ToString;
 public class AjaxDTO {
     private String param1;
     private String param2;
+
+    // 기본 생성자 추가
+    public AjaxDTO() {
+    }
 }
